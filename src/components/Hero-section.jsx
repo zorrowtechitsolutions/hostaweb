@@ -30,10 +30,8 @@ export function HeroSection() {
 
                 {/* BRAND LINE */}
                 <p className="text-sm text-slate-600 max-w-xl mx-auto lg:mx-0">
-                  Hosta is released by <strong>Zorrowtech IT Solutions</strong> — visit{" "}
-                  <a href="https://zorrowtech.in" target="_blank" rel="noopener noreferrer" className="underline">
-                    zorrowtech.in
-                  </a>
+                  Hosta is released by <strong>Zorrowtech IT Solutions</strong> 
+                 
                 </p>
               </div>
 
@@ -151,3 +149,4 @@ export function HeroSection() {
 }
 
 export default HeroSection;
+
