@@ -69,7 +69,7 @@ export function CtaSection() {
                 asChild
                 size="lg"
                 className="w-full inline-flex items-center justify-center gap-2 rounded-full h-11 text-sm font-medium 
-                text-slate-900 bg-green-500 hover:bg-green-300 transition-colors shadow-md border-0"
+                text-slate-900 bg-green-600 hover:bg-green-300 transition-colors shadow-md border-0"
               >
                 <a
                   href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
@@ -101,3 +101,4 @@ export function CtaSection() {
 }
 
 export default CtaSection
+
