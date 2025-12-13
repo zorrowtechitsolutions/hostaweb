@@ -49,7 +49,7 @@ export function HeroSection() {
 
                 <button
                   onClick={() => setOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 h-12 text-base font-medium text-slate-900 bg-green-500 hover:bg-green-300 transition-colors shadow-lg border-0"
+                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 h-12 text-base font-medium text-slate-900 bg-green-600 hover:bg-green-300 transition-colors shadow-lg border-0"
                 >
                   <Smartphone className="w-5 h-5" />
                   Download App Now
@@ -149,4 +149,5 @@ export function HeroSection() {
 }
 
 export default HeroSection;
+
 
