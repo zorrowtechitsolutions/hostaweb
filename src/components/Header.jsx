@@ -58,7 +58,7 @@ export const Header = () => {
               {/* Main Text Logo (click scroll to hero) */}
               <button
                 onClick={() => handleScroll("hero")}
-                className="text-2xl font-bold tracking-tight text-green-400"
+                className="text-2xl font-bold tracking-tight text-green-600"
                 aria-label="Go to top / Home"
               >
                 HOSTA
@@ -202,3 +202,4 @@ export default function HomePage() {
     </>
   );
 }
+
