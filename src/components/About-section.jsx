@@ -4,10 +4,26 @@ import { Stethoscope, Ambulance, Droplet, Users } from "lucide-react"
 
 export function AboutSection() {
   const features = [
-    { icon: Stethoscope, title: "Hospital Appointment Booking" },
-    { icon: Ambulance, title: "1-Tap Emergency Ambulance" },
-    { icon: Droplet, title: "Blood Donor Finder" },
-    { icon: Users, title: "Doctor Search" },
+    {
+      icon: Stethoscope,
+      title: "Hospital Appointment Booking",
+      bgColor: "bg-white",
+    },
+    {
+      icon: Ambulance,
+      title: "1-Tap Emergency Ambulance",
+      bgColor: "bg-white",
+    },
+    {
+      icon: Droplet,
+      title: "Blood Donor Finder",
+      bgColor: "bg-white",
+    },
+    {
+      icon: Users,
+      title: "Doctor Search",
+      bgColor: "bg-white",
+    },
   ]
 
   return (
@@ -37,7 +53,10 @@ export function AboutSection() {
                 key={index}
                 className="glass-nano p-5 rounded-xl flex items-center gap-4 text-left"
               >
-                <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-primary/10 flex items-center justify-center">
+                {/* Icon with custom background color */}
+                <div
+                  className={`flex-shrink-0 w-12 h-12 rounded-xl flex items-center justify-center ${feature.bgColor}`}
+                >
                   <Icon className="w-6 h-6 text-primary" />
                 </div>
 
