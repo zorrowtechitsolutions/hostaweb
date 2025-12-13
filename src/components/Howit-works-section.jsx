@@ -113,7 +113,7 @@ export function HowItWorksSection() {
                   className="p-10 sm:p-12 text-center space-y-8 h-full flex flex-col items-center justify-between"
                 >
                   <div className="flex flex-col items-center text-center space-y-6">
-                    <div className="w-16 h-16 rounded-full bg-primary/10 flex items-center justify-center">
+                    <div className="w-16 h-16 rounded-full bg-green-600 flex items-center justify-center">
                       <Icon className="w-8 h-8 text-primary" />
                     </div>
                     <div>
@@ -143,3 +143,4 @@ export function HowItWorksSection() {
 }
 
 export default HowItWorksSection;
+
