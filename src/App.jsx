@@ -15,7 +15,7 @@ function App() {
 
   return (
     
-      <main className="w-full bg-gradient-to-br via-green-100">
+      <main className="w-full bg-gradient-to-br via-green-200">
    <AppRoutes/>
     </main>
   )
