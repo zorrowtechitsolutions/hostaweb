@@ -116,7 +116,7 @@ export function HeroSection() {
                 href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 h-11 text-sm font-medium text-slate-900 bg-green-500 hover:bg-green-300 transition-colors shadow-md"
+                className="inline-flex items-center justify-center gap-2 rounded-full px-6 h-11 text-sm font-medium text-slate-900 bg-green-600 hover:bg-green-300 transition-colors shadow-md"
               >
                 <Smartphone className="w-5 h-5" />
                 Download for Android
@@ -149,5 +149,6 @@ export function HeroSection() {
 }
 
 export default HeroSection;
+
 
 
