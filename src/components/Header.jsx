@@ -74,7 +74,7 @@ export const Header = () => {
               <button
                 onClick={openDownloadModal}
                 className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold 
-                text-slate-900 bg-green-500 border border-green-500 shadow-md 
+                text-slate-900 bg-green-600 border border-green-500 shadow-md 
                 backdrop-blur-xl hover:bg-green-400 transition-colors"
               >
                 <Download className="w-4 h-4" />
@@ -202,4 +202,5 @@ export default function HomePage() {
     </>
   );
 }
+
 
