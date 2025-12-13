@@ -22,10 +22,11 @@ function Home() {
       <HowItWorksSection />
       <ScreenshotsSection />
       <CtaSection />
-      <Keyfeatures/>
+      {/* <Keyfeatures/> */}
       <Footer />
     </>
   )
 }
+
 
 export default Home
