@@ -2,46 +2,46 @@
 
 import React, { useState } from "react";
 import { Smartphone, Apple, X, Globe } from "lucide-react";
+import { motion, AnimatePresence } from "framer-motion";
 
-export function HeroSection() {
+export default function HeroSection() {
   const [open, setOpen] = useState(false);
 
   return (
     <>
-      <section className="relative min-h-[20vh] flex items-center overflow-hidden">
-        {/* Background (keep empty or add gradient if needed) */}
-        <div className="absolute inset-0" />
+      {/* HERO SECTION */}
+      <section className="relative overflow-hidden">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-28">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
 
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full py-5 lg:py-28">
-          {/* Use a 1-column layout on mobile so the preview sits under the text and is centered */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
-            {/* LEFT TEXT */}
-            <div className="flex flex-col justify-center space-y-6 text-center lg:text-left">
-              {/* TITLE */}
-              <div className="space-y-4">
-                <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-black">
-                  Your Health. Your Hospital.{" "}
-                  <span className="text-green-600">One App.</span>
-                </h1>
+            {/* LEFT CONTENT */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="space-y-7 text-center lg:text-left"
+            >
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold tracking-tight text-black">
+                Your Health. Your Hospital.{" "}
+                <span className="text-green-600">One App.</span>
+              </h1>
 
-                <p className="text-lg sm:text-xl text-black leading-relaxed max-w-xl mx-auto lg:mx-0">
-                  A simple and powerful healthcare app for Kerala. Book hospitals, request ambulances, and find blood donors instantly.
-                </p>
+              <p className="text-base sm:text-lg text-black/80 max-w-xl mx-auto lg:mx-0 leading-relaxed">
+                A simple and powerful healthcare app for Kerala.
+                Book hospitals, request ambulances, and find blood donors instantly.
+              </p>
 
-                {/* BRAND LINE */}
-                <p className="text-sm text-slate-600 max-w-xl mx-auto lg:mx-0">
-                  Hosta is released by <strong>Zorrowtech IT Solutions</strong> 
-                 
-                </p>
-              </div>
+              <p className="text-sm text-black/60">
+                A product by <strong>Zorrowtech IT Solutions</strong>
+              </p>
 
-              {/* SINGLE DOWNLOAD BUTTON */}
-              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-4">
+              {/* CTA BUTTONS */}
+              <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-3">
                 <a
                   href="https://zorrowtech.in"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-6 h-12 text-base font-medium text-slate-900 bg-white/90 hover:bg-white/80 transition-colors shadow-sm border"
+                  className="inline-flex items-center justify-center gap-2 h-12 px-6 rounded-full border border-black/15 text-black text-sm font-medium hover:bg-black/5 transition"
                 >
                   <Globe className="w-4 h-4" />
                   zorrowtech.in
@@ -49,106 +49,127 @@ export function HeroSection() {
 
                 <button
                   onClick={() => setOpen(true)}
-                  className="inline-flex items-center justify-center gap-2 rounded-full px-8 h-12 text-base font-medium text-slate-900 bg-green-600 hover:bg-green-300 transition-colors shadow-lg border-0"
+                  className="inline-flex items-center justify-center gap-2 h-12 px-8 rounded-full bg-green-600 text-white text-sm font-semibold hover:bg-green-500 transition shadow-lg shadow-green-600/30"
                 >
                   <Smartphone className="w-5 h-5" />
-                  Download App Now
+                  Get the App
                 </button>
               </div>
-            </div>
+            </motion.div>
 
-            {/* RIGHT APP PREVIEW */}
-            {/* On mobile this will appear below the text (grid-cols-1) and is centered.
-                The phone size is responsive: smaller on mobile, larger on desktop. */}
-            <div className="flex justify-center lg:justify-center mt-0 lg:mt-0">
-              <div className="relative">
-                {/* Responsive GLASS PHONE */}
-                <div
-                  className="
-                    w-56 sm:w-64 md:w-72
-                   
-                    p-3 rounded-3xl border border-white/10 bg-white/5 backdrop-blur-xl shadow-xl
-                    flex items-center justify-center overflow-hidden mx-auto
-                  "
-                >
-                  {/* PHONE SCREEN IMAGE */}
+            {/* RIGHT PREVIEW */}
+            <motion.div
+              initial={{ opacity: 0, scale: 0.95 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ duration: 0.7 }}
+              className="flex justify-center"
+            >
+              <motion.div
+                animate={{ y: [0, -8, 0] }}
+                transition={{ repeat: Infinity, duration: 6 }}
+                className="relative"
+              >
+                <div className="w-56 sm:w-64 md:w-72 rounded-3xl p-3 bg-black/5 backdrop-blur-xl border border-black/10 shadow-xl">
                   <img
-                    src="/Hero.png" // change to your image path
-                    alt="App Screenshot"
+                    src="/Hero.png"
+                    alt="Hosta App Preview"
                     className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>
 
-                {/* GLOW BEHIND */}
-                <div className="absolute -inset-6 bg-green-400/20 blur-3xl rounded-full -z-10 pointer-events-none" />
-              </div>
-            </div>
+                <div className="absolute -inset-10 bg-green-500/20 blur-3xl rounded-full -z-10" />
+              </motion.div>
+            </motion.div>
+
           </div>
         </div>
       </section>
 
-      {/* POPUP OVERLAY */}
-      {open && (
-        <div
-          className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-sm"
-          onClick={() => setOpen(false)}
-        >
-          {/* POPUP CARD */}
-          <div
-            className="relative w-full max-w-sm mx-4 rounded-2xl border border-white/20 bg-white/10 backdrop-blur-xl shadow-2xl p-6 space-y-4"
-            onClick={(e) => e.stopPropagation()}
+      {/* FLOATING GLASS POPUP (STYLE YOU LIKE) */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            className="
+              fixed inset-0 z-50
+              flex items-center justify-center
+              bg-black/20 backdrop-blur-[1.5px]
+            "
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setOpen(false)}
           >
-            {/* CLOSE BUTTON */}
-            <button
-              onClick={() => setOpen(false)}
-              className="absolute right-3 top-3 inline-flex items-center justify-center rounded-full p-1 hover:bg-white/10"
-              aria-label="Close download dialog"
+            {/* POPUP CARD */}
+            <motion.div
+              onClick={(e) => e.stopPropagation()}
+              initial={{ scale: 0.94, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              exit={{ scale: 0.94, opacity: 0 }}
+              transition={{ duration: 0.25, ease: "easeOut" }}
+              className="
+                relative
+                w-full max-w-sm
+                rounded-2xl
+                bg-white/35 backdrop-blur-lg
+                border border-white/40
+                shadow-xl
+                p-5
+                text-black
+              "
             >
-              <X className="w-4 h-4 text-white/70" />
-            </button>
-
-            <h3 className="text-lg font-semibold text-white">Choose your platform</h3>
-            <p className="text-sm text-white/70">Download Hosta Manager — provided by Zorrowtech IT Solutions.</p>
-
-            <div className="mt-2 flex flex-col gap-3">
-              {/* ANDROID BUTTON (ACTIVE) */}
-              <a
-                href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 h-11 text-sm font-medium text-slate-900 bg-green-600 hover:bg-green-300 transition-colors shadow-md"
-              >
-                <Smartphone className="w-5 h-5" />
-                Download for Android
-              </a>
-
-              {/* IOS BUTTON (DISABLED, GLASS TYPE) */}
+              {/* CLOSE */}
               <button
-                disabled
-                className="inline-flex items-center justify-center gap-2 rounded-full px-6 h-11 text-sm font-medium text-white/70 border border-white/25 bg-white/5 backdrop-blur-md cursor-not-allowed"
+                onClick={() => setOpen(false)}
+                className="absolute top-3 right-3 rounded-full p-1 hover:bg-black/10"
               >
-                <Apple className="w-5 h-5" />
-                Download on App Store
+                <X className="w-4 h-4 text-black/70" />
               </button>
-            </div>
 
-            {/* SMALL FOOTER */}
-            <div className="pt-3 border-t border-white/10 mt-4">
-              <p className="text-xs text-white/60">
-                Hosta is a product of <strong>Zorrowtech IT Solutions</strong>. Learn more at{" "}
-                <a href="https://zorrowtech.in" target="_blank" rel="noopener noreferrer" className="underline">
-                  zorrowtech.in
+              {/* TITLE */}
+              <div className="text-center space-y-1">
+                <h3 className="text-sm font-semibold">
+                  Choose your platform
+                </h3>
+                <p className="text-xs text-black/60">
+                  Download Hosta app for your device
+                </p>
+              </div>
+
+              {/* BUTTONS */}
+              <div className="mt-4 space-y-2">
+                <a
+                  href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="
+                    w-full flex items-center justify-center gap-2
+                    h-10 rounded-full
+                    bg-green-500 hover:bg-green-400
+                    text-white text-sm font-medium
+                    transition
+                  "
+                >
+                  <Smartphone className="w-4 h-4" />
+                  Download for Android
                 </a>
-              </p>
-            </div>
-          </div>
-        </div>
-      )}
+
+                <div
+                  className="
+                    w-full flex items-center justify-center gap-2
+                    h-10 rounded-full
+                    bg-white/40 border border-white/50
+                    text-black/50 text-sm
+                    cursor-not-allowed
+                  "
+                >
+                  <Apple className="w-4 h-4" />
+                  iOS (Coming Soon)
+                </div>
+              </div>
+            </motion.div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
-
-export default HeroSection;
-
-
-
