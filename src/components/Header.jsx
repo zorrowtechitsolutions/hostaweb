@@ -19,7 +19,7 @@ import { ScreenshotsSection } from "./Screenshot-section";
 import CtaSection from "./Cta-section";
 import { Keyfeatures } from "./Keyfeatures";
 
-const SUPPORT_PHONE = "919000000000"; // 🔴 replace with real number
+const SUPPORT_PHONE = "918714412090"; // 🔴 replace with real number
 
 /* ---------------- HEADER ---------------- */
 
@@ -271,3 +271,4 @@ export default function HomePage() {
   bg-white/40 border border-white/50 text-black/50 text-sm cursor-not-allowed;
 }
 */
+
