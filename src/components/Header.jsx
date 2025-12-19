@@ -11,149 +11,105 @@ import { ScreenshotsSection } from "./Screenshot-section";
 import CtaSection from "./Cta-section";
 import { Keyfeatures } from "./Keyfeatures";
 
-
 export const Header = () => {
-  const [isOpen, setIsOpen] = useState(false);
   const [isDownloadOpen, setIsDownloadOpen] = useState(false);
-
-  const openDownloadModal = () => setIsDownloadOpen(true);
-  const closeDownloadModal = () => setIsDownloadOpen(false);
 
   const handleScroll = (id) => {
     const el = document.getElementById(id);
     if (el) {
       el.scrollIntoView({ behavior: "smooth", block: "start" });
     }
-    setIsOpen(false);
   };
 
   return (
     <header className="sticky top-0 z-50">
-      <div className="mx-2 mt-2 rounded-3xl border border-white/10 bg-white/70 backdrop-blur-xl shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          {/* Top Row */}
+      {/* HEADER CONTAINER */}
+      <div className="mx-2 mt-2 rounded-3xl border border-white/30 bg-white/30 backdrop-blur-md shadow-lg relative">
+        
+        {/* Subtle depth layer */}
+        <div className="absolute inset-0 rounded-3xl bg-gradient-to-b from-white/30 to-transparent pointer-events-none" />
+
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
-            {/* Left cluster: logo + profile/logo section */}
+
+            {/* LEFT */}
             <div className="flex items-center gap-4">
-              {/* PROFILE / HOSTA LOGO SECTION (visible on md+) */}
-              <div className=" md:flex items-center gap-3 ml-2">
-                {/* HOSTA Logo Placeholder (you will replace src manually) */}
-                <div
-                  className="w-10 h-10 rounded-full overflow-hidden border border-white/20 shadow-md bg-white/10 backdrop-blur-xl
-                  flex items-center justify-center"
-                  title="HOSTA logo (replace /hosta-logo.png)"
-                  >
+              <div className="flex items-center gap-3 ml-2">
+                <div className="w-10 h-10 rounded-full overflow-hidden border border-white/30 bg-white/20 backdrop-blur-md flex items-center justify-center shadow-sm">
                   <img
-                    src="/logo.png" // <-- replace with your logo path
+                    src="/logo.png"
                     alt="Hosta Logo"
                     className="w-full h-full object-cover"
                   />
                 </div>
-
-                {/* Profile Avatar Placeholder */}
-                <div
-            
-                ></div>
               </div>
-              {/* Main Text Logo (click scroll to hero) */}
+
               <button
                 onClick={() => handleScroll("hero")}
                 className="text-2xl font-bold tracking-tight text-green-600"
-                aria-label="Go to top / Home"
               >
                 HOSTA
               </button>
-
-              
             </div>
 
-      
-
-            {/* Desktop Download Button (glass / green) */}
+            {/* RIGHT */}
             <div className="hidden md:flex">
               <button
-                onClick={openDownloadModal}
+                onClick={() => setIsDownloadOpen(true)}
                 className="inline-flex items-center gap-2 rounded-full px-5 py-2 text-sm font-semibold 
-                text-slate-900 bg-green-600 border border-green-500 shadow-md 
-                backdrop-blur-xl hover:bg-green-400 transition-colors"
+                text-slate-900 bg-green-500 hover:bg-green-400 transition shadow-md"
               >
                 <Download className="w-4 h-4" />
                 Download Now
               </button>
             </div>
-
-            {/* Mobile Menu Toggle */}
-            {/* <button
-              onClick={() => setIsOpen(!isOpen)}
-              className="md:hidden inline-flex items-center justify-center p-2 rounded-full hover:bg-slate-900/10 transition-colors"
-              aria-label="Toggle menu"
-            >
-              {isOpen ? (
-                <X className="w-6 h-6 text-slate-900" />
-              ) : (
-                <Menu className="w-6 h-6 text-slate-900" />
-              )}
-            </button> */}
           </div>
-
-       
         </div>
       </div>
 
-      {/* Download Modal (Glass Popup) */}
+      {/* DOWNLOAD POPUP */}
       {isDownloadOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="relative w-full max-w-sm mx-4 rounded-3xl border border-white/15 bg-white/10 backdrop-blur-2xl shadow-2xl p-6 space-y-6">
-            {/* Close Button */}
+        <div
+          className="fixed inset-0 z-50 flex items-center justify-center
+          bg-black/20 backdrop-blur-[1.5px]"
+          onClick={() => setIsDownloadOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            className="relative w-full max-w-sm mx-4 rounded-2xl
+            bg-white/35 backdrop-blur-lg border border-white/40 shadow-xl p-5"
+          >
+            {/* CLOSE */}
             <button
-              onClick={closeDownloadModal}
-              className="absolute top-3 right-3 p-1.5 rounded-full hover:bg-white/15 transition-colors"
-              aria-label="Close download dialog"
+              onClick={() => setIsDownloadOpen(false)}
+              className="absolute top-3 right-3 p-1 rounded-full hover:bg-black/10"
             >
-              <X className="w-4 h-4 text-white/80" />
+              <X className="w-4 h-4 text-black/70" />
             </button>
 
-            {/* Header */}
-            <div className="space-y-2 text-center">
-              <div className="inline-flex items-center justify-center w-12 h-12 rounded-2xl bg-green-400/30 border border-white/20 mb-1">
-                <Download className="w-5 h-5 text-white" />
-              </div>
-              <h3 className="text-xl font-semibold text-white">
-                Download HOSTA
-              </h3>
-              <p className="text-sm text-slate-200/80">
-                Choose your platform to get started with HOSTA.
+            <div className="text-center space-y-1">
+              <h3 className="text-sm font-semibold">Choose your platform</h3>
+              <p className="text-xs text-black/60">
+                Download Hosta app for your device
               </p>
             </div>
 
-            {/* Buttons */}
-            <div className="space-y-3">
-              {/* Play Store */}
+            <div className="mt-4 space-y-2">
               <a
-                href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
+                href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold text-slate-900 bg-green-500 hover:bg-green-300 transition-all shadow-md border-0"
+                className="w-full flex items-center justify-center gap-2 h-10 rounded-full bg-green-500 hover:bg-green-400 text-white text-sm font-medium transition"
               >
                 <Smartphone className="w-4 h-4" />
-                Download on Play Store
+                Download for Android
               </a>
 
-              {/* App Store (Coming Soon, glass & disabled) */}
-              <button
-                disabled
-                className="w-full inline-flex items-center justify-center gap-2 rounded-full px-5 py-2.5 text-sm font-semibold 
-                text-white/80 bg-white/10 border border-white/25 
-                backdrop-blur-md cursor-not-allowed"
-              >
-                <Apple className="w-4 h-4 " />
-                Download on App Store
-              </button>
+              <div className="w-full flex items-center justify-center gap-2 h-10 rounded-full bg-white/40 border border-white/50 text-black/50 text-sm cursor-not-allowed">
+                <Apple className="w-4 h-4" />
+                iOS (Coming Soon)
+              </div>
             </div>
-
-            <p className="text-[11px] text-center text-slate-200/60">
-              By downloading, you agree to our Terms &amp; Privacy Policy.
-            </p>
           </div>
         </div>
       )}
@@ -165,42 +121,16 @@ export default function HomePage() {
   return (
     <>
       <Header />
-
       <main>
-        <section id="hero">
-          <HeroSection />
-        </section>
-
-        <section id="about">
-          <AboutSection />
-        </section>
-
-        <section id="features">
-          <FeaturesSection />
-        </section>
-
-        <section id="why-hosta">
-          <WhyChooseSection />
-        </section>
-
-        <section id="how-it-works">
-          <HowItWorksSection />
-        </section>
-
-        <section id="screenshots">
-          <ScreenshotsSection />
-        </section>
-
-        <section id="cta">
-          <CtaSection />
-        </section>
-
-        <section id="key-features">
-          <Keyfeatures />
-        </section>
+        <section id="hero"><HeroSection /></section>
+        <section id="about"><AboutSection /></section>
+        <section id="features"><FeaturesSection /></section>
+        <section id="why-hosta"><WhyChooseSection /></section>
+        <section id="how-it-works"><HowItWorksSection /></section>
+        <section id="screenshots"><ScreenshotsSection /></section>
+        <section id="cta"><CtaSection /></section>
+        <section id="key-features"><Keyfeatures /></section>
       </main>
     </>
   );
 }
-
-
