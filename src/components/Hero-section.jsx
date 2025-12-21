@@ -4,6 +4,12 @@ import React, { useState } from "react";
 import { Smartphone, Apple, X, Globe } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager";
+
+const APP_STORE_URL =
+  "https://apps.apple.com/app/id0000000000"; // 🔴 replace with real App Store ID
+
 export default function HeroSection() {
   const [open, setOpen] = useState(false);
 
@@ -76,6 +82,7 @@ export default function HeroSection() {
                     className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>
+
                 <div className="absolute -inset-10 bg-green-500/20 blur-3xl rounded-full -z-10" />
               </motion.div>
             </motion.div>
@@ -84,7 +91,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* GET APP POPUP — MATCH CHAT POPUP */}
+      {/* GET APP POPUP — SAME AS CHAT GLASS */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -133,8 +140,9 @@ export default function HeroSection() {
 
               {/* ACTIONS */}
               <div className="mt-5 space-y-3">
+                {/* ANDROID */}
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager"
+                  href={PLAY_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
@@ -149,18 +157,22 @@ export default function HeroSection() {
                   Download for Android
                 </a>
 
-                <div
+                {/* IOS — ACTIVE */}
+                <a
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="
                     w-full flex items-center justify-center gap-2
                     h-11 rounded-full
-                    bg-white/40 border border-white/50
-                    text-black/50 text-sm
-                    cursor-not-allowed
+                    bg-black/70
+                    text-white text-sm font-medium
+                    hover:bg-black/80 transition
                   "
                 >
                   <Apple className="w-4 h-4" />
-                  iOS (Coming Soon)
-                </div>
+                  Download on App Store
+                </a>
               </div>
             </motion.div>
           </motion.div>
