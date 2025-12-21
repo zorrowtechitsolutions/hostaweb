@@ -35,7 +35,7 @@ export default function HeroSection() {
                 A product by <strong>Zorrowtech IT Solutions</strong>
               </p>
 
-              {/* CTA BUTTONS */}
+              {/* CTA */}
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start pt-3">
                 <a
                   href="https://zorrowtech.in"
@@ -76,7 +76,6 @@ export default function HeroSection() {
                     className="w-full h-full object-cover rounded-2xl"
                   />
                 </div>
-
                 <div className="absolute -inset-10 bg-green-500/20 blur-3xl rounded-full -z-10" />
               </motion.div>
             </motion.div>
@@ -85,7 +84,7 @@ export default function HeroSection() {
         </div>
       </section>
 
-      {/* FLOATING GLASS POPUP (STYLE YOU LIKE) */}
+      {/* GET APP POPUP — MATCH CHAT POPUP */}
       <AnimatePresence>
         {open && (
           <motion.div
@@ -99,7 +98,6 @@ export default function HeroSection() {
             exit={{ opacity: 0 }}
             onClick={() => setOpen(false)}
           >
-            {/* POPUP CARD */}
             <motion.div
               onClick={(e) => e.stopPropagation()}
               initial={{ scale: 0.94, opacity: 0 }}
@@ -107,14 +105,12 @@ export default function HeroSection() {
               exit={{ scale: 0.94, opacity: 0 }}
               transition={{ duration: 0.25, ease: "easeOut" }}
               className="
-                relative
-                w-full max-w-sm
+                relative w-full max-w-sm mx-4
                 rounded-2xl
-                bg-white/35 backdrop-blur-lg
-                border border-white/40
+                bg-white/45 backdrop-blur-lg
+                border border-white/50
                 shadow-xl
-                p-5
-                text-black
+                p-6
               "
             >
               {/* CLOSE */}
@@ -122,31 +118,31 @@ export default function HeroSection() {
                 onClick={() => setOpen(false)}
                 className="absolute top-3 right-3 rounded-full p-1 hover:bg-black/10"
               >
-                <X className="w-4 h-4 text-black/70" />
+                <X className="w-4 h-4 text-black/80" />
               </button>
 
               {/* TITLE */}
               <div className="text-center space-y-1">
-                <h3 className="text-sm font-semibold">
+                <h3 className="text-base font-semibold text-black">
                   Choose your platform
                 </h3>
-                <p className="text-xs text-black/60">
+                <p className="text-sm text-black/70">
                   Download Hosta app for your device
                 </p>
               </div>
 
-              {/* BUTTONS */}
-              <div className="mt-4 space-y-2">
+              {/* ACTIONS */}
+              <div className="mt-5 space-y-3">
                 <a
                   href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="
                     w-full flex items-center justify-center gap-2
-                    h-10 rounded-full
-                    bg-green-500 hover:bg-green-400
+                    h-11 rounded-full
+                    bg-green-500
                     text-white text-sm font-medium
-                    transition
+                    hover:bg-green-400 transition
                   "
                 >
                   <Smartphone className="w-4 h-4" />
@@ -156,7 +152,7 @@ export default function HeroSection() {
                 <div
                   className="
                     w-full flex items-center justify-center gap-2
-                    h-10 rounded-full
+                    h-11 rounded-full
                     bg-white/40 border border-white/50
                     text-black/50 text-sm
                     cursor-not-allowed
@@ -173,4 +169,3 @@ export default function HeroSection() {
     </>
   );
 }
-
