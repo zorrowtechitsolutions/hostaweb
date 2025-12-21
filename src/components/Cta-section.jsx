@@ -5,18 +5,37 @@ import { Button } from "@/components/ui/button"
 import { Download, Apple, X } from "lucide-react"
 import { GlassWrapper } from "./Glass-wraper"
 
+const PLAY_STORE_URL =
+  "https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
+
+const APP_STORE_URL =
+  "https://apps.apple.com/app/id0000000000" // 🔴 replace with real App Store ID
+
 export function CtaSection() {
   const [open, setOpen] = useState(false)
 
   const handleDownloadClick = () => {
-    if (typeof window !== "undefined" && window.innerWidth < 1024) {
-      window.open(
-        "https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share",
-        "_blank"
-      )
-    } else {
-      setOpen(true)
+    if (typeof window === "undefined") return
+
+    const ua = navigator.userAgent || navigator.vendor || window.opera
+
+    const isAndroid = /android/i.test(ua)
+    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream
+
+    if (isAndroid) {
+      // ✅ Android → Play Store
+      window.open(PLAY_STORE_URL, "_blank")
+      return
     }
+
+    if (isIOS) {
+      // ✅ iOS → App Store
+      window.open(APP_STORE_URL, "_blank")
+      return
+    }
+
+    // ✅ Desktop / Laptop → Popup
+    setOpen(true)
   }
 
   return (
@@ -55,7 +74,7 @@ export function CtaSection() {
         </div>
       </section>
 
-      {/* POPUP OVERLAY */}
+      {/* ================= POPUP (DESKTOP ONLY) ================= */}
       {open && (
         <div
           className="
@@ -65,7 +84,6 @@ export function CtaSection() {
           "
           onClick={() => setOpen(false)}
         >
-          {/* POPUP CARD */}
           <div
             onClick={(e) => e.stopPropagation()}
             className="
@@ -78,7 +96,7 @@ export function CtaSection() {
               text-center
             "
           >
-            {/* APPLE STYLE DEPTH */}
+            {/* GLASS DEPTH */}
             <div
               className="
                 absolute inset-0 rounded-2xl
@@ -87,15 +105,14 @@ export function CtaSection() {
               "
             />
 
-            {/* CLOSE BUTTON */}
+            {/* CLOSE */}
             <button
               onClick={() => setOpen(false)}
               className="
                 absolute right-3 top-3
                 inline-flex items-center justify-center
                 rounded-full p-1
-                hover:bg-white/15
-                z-10
+                hover:bg-white/15 z-10
               "
             >
               <X className="w-4 h-4 text-white/80" />
@@ -127,7 +144,7 @@ export function CtaSection() {
                 "
               >
                 <a
-                  href="https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
+                  href={PLAY_STORE_URL}
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -136,22 +153,27 @@ export function CtaSection() {
                 </a>
               </Button>
 
-              {/* IOS DISABLED */}
+              {/* IOS */}
               <Button
+                asChild
                 size="lg"
-                disabled
                 className="
                   w-full inline-flex items-center justify-center gap-2
                   rounded-full h-11
                   text-sm font-medium
-                  text-white/70
-                  border border-white/25
-                  bg-white/5 backdrop-blur-md
-                  cursor-not-allowed
+                  text-white
+                  bg-black/70 hover:bg-black/80
+                  transition shadow-md border border-white/20
                 "
               >
-                <Apple className="w-5 h-5" />
-                Download on App Store
+                <a
+                  href={APP_STORE_URL}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <Apple className="w-5 h-5" />
+                  Download on App Store
+                </a>
               </Button>
             </div>
           </div>
