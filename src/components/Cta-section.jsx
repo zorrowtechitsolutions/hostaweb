@@ -9,34 +9,10 @@ const PLAY_STORE_URL =
   "https://play.google.com/store/apps/details?id=com.zorrowtech.hostamanager&pcampaignid=web_share"
 
 const APP_STORE_URL =
-  "https://apps.apple.com/app/id0000000000" // 🔴 replace with real App Store ID
+  "https://apps.apple.com/app/id0000000000" // 🔴 replace with real ID
 
 export function CtaSection() {
   const [open, setOpen] = useState(false)
-
-  const handleDownloadClick = () => {
-    if (typeof window === "undefined") return
-
-    const ua = navigator.userAgent || navigator.vendor || window.opera
-
-    const isAndroid = /android/i.test(ua)
-    const isIOS = /iPad|iPhone|iPod/.test(ua) && !window.MSStream
-
-    if (isAndroid) {
-      // ✅ Android → Play Store
-      window.open(PLAY_STORE_URL, "_blank")
-      return
-    }
-
-    if (isIOS) {
-      // ✅ iOS → App Store
-      window.open(APP_STORE_URL, "_blank")
-      return
-    }
-
-    // ✅ Desktop / Laptop → Popup
-    setOpen(true)
-  }
 
   return (
     <>
@@ -57,9 +33,10 @@ export function CtaSection() {
             </div>
 
             <div className="flex justify-center">
+              {/* ✅ ONLY OPENS POPUP */}
               <Button
                 size="lg"
-                onClick={handleDownloadClick}
+                onClick={() => setOpen(true)}
                 className="
                   rounded-full gap-2 h-12 px-8 text-base
                   bg-green-600 hover:bg-green-500
@@ -74,7 +51,7 @@ export function CtaSection() {
         </div>
       </section>
 
-      {/* ================= POPUP (DESKTOP ONLY) ================= */}
+      {/* ================= POPUP ================= */}
       {open && (
         <div
           className="
@@ -84,6 +61,7 @@ export function CtaSection() {
           "
           onClick={() => setOpen(false)}
         >
+          {/* CARD */}
           <div
             onClick={(e) => e.stopPropagation()}
             className="
@@ -110,7 +88,6 @@ export function CtaSection() {
               onClick={() => setOpen(false)}
               className="
                 absolute right-3 top-3
-                inline-flex items-center justify-center
                 rounded-full p-1
                 hover:bg-white/15 z-10
               "
@@ -124,7 +101,7 @@ export function CtaSection() {
                 Choose your platform
               </h3>
               <p className="text-sm text-white/70">
-                Download Hosta Manager for your device.
+                Download Hosta Manager for your device
               </p>
             </div>
 
@@ -135,8 +112,7 @@ export function CtaSection() {
                 asChild
                 size="lg"
                 className="
-                  w-full inline-flex items-center justify-center gap-2
-                  rounded-full h-11
+                  w-full rounded-full h-11
                   text-sm font-medium
                   text-black
                   bg-green-500 hover:bg-green-400
@@ -148,7 +124,7 @@ export function CtaSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Download className="w-5 h-5" />
+                  <Download className="w-5 h-5 mr-2 inline" />
                   Download for Android
                 </a>
               </Button>
@@ -158,8 +134,7 @@ export function CtaSection() {
                 asChild
                 size="lg"
                 className="
-                  w-full inline-flex items-center justify-center gap-2
-                  rounded-full h-11
+                  w-full rounded-full h-11
                   text-sm font-medium
                   text-white
                   bg-black/70 hover:bg-black/80
@@ -171,7 +146,7 @@ export function CtaSection() {
                   target="_blank"
                   rel="noopener noreferrer"
                 >
-                  <Apple className="w-5 h-5" />
+                  <Apple className="w-5 h-5 mr-2 inline" />
                   Download on App Store
                 </a>
               </Button>
